@@ -10,15 +10,15 @@ M.setup = function(config)
     local plugin_name = "ww_oneshot_crosshair"
     local image_path = globals.PLUG_CONFIG_DIR .. plugin_name .. "/crosshair.png"
 
-    local cfg = {
-        resx = 1920,
-        resy = 1080,
+    local pluginconfig = {
+        resx = config.resolution[1],
+        resy = config.resolution[2],
         size = 80,
         key = "K",
         path = image_path,
     }
 
-    config.actions[cfg.key] = function()
+    config.actions[pluginconfig.key] = function()
         if crosshair_image then
             crosshair_image:close()
             crosshair_image = nil
@@ -28,12 +28,12 @@ M.setup = function(config)
             crosshair_active = false
         else
             crosshair_active = true
-            crosshair_image = waywall.image(cfg.path, {
+            crosshair_image = waywall.image(pluginconfig.path, {
                 dst = {
-                    x = (cfg.resx - cfg.size) / 2,
-                    y = (cfg.resy - cfg.size) / 2,
-                    w = cfg.size,
-                    h = cfg.size,
+                    x = (pluginconfig.resx - pluginconfig.size) / 2,
+                    y = (pluginconfig.resy - pluginconfig.size) / 2,
+                    w = pluginconfig.size,
+                    h = pluginconfig.size,
                 },
             })
         end
