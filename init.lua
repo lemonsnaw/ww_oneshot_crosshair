@@ -3,6 +3,10 @@ local waywall = require("waywall")
 
 local M = {}
 
+
+local crosshair_image = nil
+local crosshair_active = nil
+
 M.setup = function(config)
     config = config or {}
     config.actions = config.actions or {}
@@ -11,8 +15,8 @@ M.setup = function(config)
     local image_path = globals.PLUG_CONFIG_DIR .. plugin_name .. "/crosshair.png"
 
     local pluginconfig = {
-        resx = config.resolution[1],
-        resy = config.resolution[2],
+        resx = 1920,
+        resy = 1080,
         size = 80,
         key = "K",
         path = image_path,
